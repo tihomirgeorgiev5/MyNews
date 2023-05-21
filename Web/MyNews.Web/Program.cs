@@ -1,7 +1,12 @@
 ﻿namespace MyNews.Web
 {
-    using System.Reflection;
-
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using MyNews.Data;
     using MyNews.Data.Common;
     using MyNews.Data.Common.Repositories;
@@ -12,14 +17,7 @@
     using MyNews.Services.Mapping;
     using MyNews.Services.Messaging;
     using MyNews.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
+    using System.Reflection;
 
     public class Program
     {
