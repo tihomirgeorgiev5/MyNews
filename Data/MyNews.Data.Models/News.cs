@@ -4,7 +4,7 @@
 
     using MyNews.Data.Common.Models;
 
-    public class News : BaseDeletableModel<int>
+    public class NewsArticle : BaseDeletableModel<int>
     {
         private int tags;
 
@@ -21,6 +21,8 @@
             get { return this.tags; }
             set { this.tags = value; }
         }
+
+        public string ImageUrl { get; set; }
 
         public string AddedByUserId { get; set; }
 
