@@ -6,18 +6,20 @@
 
     public class News : BaseDeletableModel<int>
     {
-        private int writerCount;
+        private int tags;
 
         public string Title { get; set; }
 
-        public string Description { get; set; }
+        public string Content { get; set; }
 
-        public DateTime Date { get; set; }
+        public string Author { get; set; }
 
-        public int WriterCount
+        public DateTime PublishDate { get; set; }
+
+        public int Tags
         {
-            get { return this.writerCount; }
-            set { this.writerCount = value; }
+            get { return this.tags; }
+            set { this.tags = value; }
         }
 
         public string AddedByUserId { get; set; }
