@@ -8,7 +8,7 @@
 
         public virtual NewsArticle Article { get; set; }
 
-        public int TagsId { get; set; }
+        public int TagId { get; set; }
 
         public virtual NewsTag Tag { get; set; }
     }
