@@ -25,6 +25,6 @@
 
         public string AddedByUserId { get; set; }
 
-        public ApplicationUser AddedByUser { get; set; }   
+        public ApplicationUser AddedByUser { get; set; }
     }
 }
