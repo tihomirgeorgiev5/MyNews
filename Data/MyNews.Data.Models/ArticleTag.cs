@@ -11,5 +11,7 @@
         public int TagId { get; set; }
 
         public virtual NewsTag Tag { get; set; }
+
+        public string Quantity { get; set; }
     }
 }

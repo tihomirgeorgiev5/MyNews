@@ -34,6 +34,10 @@
 
         public virtual ApplicationUser AddedByUser { get; set; }
 
+        public int CategoryId { get; set; }
+
+        public virtual NewsCategory Category { get; set; }
+
         public virtual ICollection<ArticleTag> Tags { get; set; }
     }
 }
