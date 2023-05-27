@@ -1,4 +1,5 @@
 ﻿@using MyNews.Common
+@model MyNews.Web.ViewModels.Home.IndexViewModel
 @{
     this.ViewData["Title"] = "Home Page";
 }
@@ -8,7 +9,7 @@
     <p>We have:</p>
     <ul>
         <li>Articles: @Model.ArticlesCount</li>
-        <li>Categories: @Model.CategoriesCount</li>
+        <li>Categories: @Model.CategoriesCount</li> 
         <li>Images: @Model.ImagesCount</li>
         <li>Tags: @Model.TagsCount</li>      
     </ul>
