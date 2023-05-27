@@ -12,6 +12,7 @@
         public NewsArticle()
         {
             this.Tags = new HashSet<ArticleTag>();
+            this.Images = new HashSet<Image>();
         }
 
         public string Title { get; set; }
@@ -39,5 +40,7 @@
         public virtual NewsCategory Category { get; set; }
 
         public virtual ICollection<ArticleTag> Tags { get; set; }
+
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

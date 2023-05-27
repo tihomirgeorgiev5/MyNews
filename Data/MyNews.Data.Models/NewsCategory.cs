@@ -6,6 +6,11 @@
 
     public class NewsCategory : BaseDeletableModel<int>
     {
+        public NewsCategory()
+        {
+            this.Articles = new HashSet<NewsArticle>();
+        }
+
         public string Name { get; set; }
 
         public string Description { get; set; }

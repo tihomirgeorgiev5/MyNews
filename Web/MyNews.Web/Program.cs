@@ -1,5 +1,7 @@
 ﻿namespace MyNews.Web
 {
+    using System.Reflection;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -17,7 +19,6 @@
     using MyNews.Services.Mapping;
     using MyNews.Services.Messaging;
     using MyNews.Web.ViewModels;
-    using System.Reflection;
 
     public class Program
     {
