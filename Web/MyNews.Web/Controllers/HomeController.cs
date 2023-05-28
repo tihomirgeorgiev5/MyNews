@@ -1,44 +1,23 @@
 ﻿namespace MyNews.Web.Controllers
 {
     using System.Diagnostics;
-    using System.Linq;
 
     using Microsoft.AspNetCore.Mvc;
-    using MyNews.Data;
-    using MyNews.Data.Common.Repositories;
-    using MyNews.Data.Models;
+    using MyNews.Services.Data;
     using MyNews.Web.ViewModels;
-    using MyNews.Web.ViewModels.Home;
 
     public class HomeController : BaseController
     {
-        private readonly IDeletableEntityRepository<NewsCategory> categoriesRepository;
-        private readonly IRepository<Image> imageRepository;
-        private readonly IDeletableEntityRepository<NewsTag> tagsRepository;
-        private readonly IDeletableEntityRepository<NewsArticle> articlesRepository;
+        private readonly IGetCountsService countService;
 
-        public HomeController(
-            IDeletableEntityRepository<NewsCategory> categoriesRepository,
-            IRepository<Image> imageRepository,
-            IDeletableEntityRepository<NewsTag> tagsRepository,
-            IDeletableEntityRepository<NewsArticle> articlesRepository)
+        public HomeController(IGetCountsService countService)
         {
-            this.categoriesRepository = categoriesRepository;
-            this.imageRepository = imageRepository;
-            this.tagsRepository = tagsRepository;
-            this.articlesRepository = articlesRepository;
+            this.countService = countService;
         }
 
         public IActionResult Index()
         {
-            var viewModel = new IndexViewModel
-            {
-                CategoriesCount = this.categoriesRepository.All().Count(),
-                ImagesCount = this.imageRepository.All().Count(),
-                TagsCount = this.tagsRepository.All().Count(),
-                ArticlesCount = this.articlesRepository.All().Count(),
-            };
-
+            var viewModel = this.countService.GetCounts();
             return this.View(viewModel);
         }
 

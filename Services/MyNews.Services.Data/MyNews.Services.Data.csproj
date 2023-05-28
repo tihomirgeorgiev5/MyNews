@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\MyNews.Data.Common\MyNews.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\MyNews.Data.Models\MyNews.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\MyNews.Web.ViewModels\MyNews.Web.ViewModels.csproj" />
     <ProjectReference Include="..\MyNews.Services.Mapping\MyNews.Services.Mapping.csproj" />
   </ItemGroup>
 
