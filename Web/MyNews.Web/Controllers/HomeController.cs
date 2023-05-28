@@ -5,26 +5,38 @@
 
     using Microsoft.AspNetCore.Mvc;
     using MyNews.Data;
+    using MyNews.Data.Common.Repositories;
+    using MyNews.Data.Models;
     using MyNews.Web.ViewModels;
     using MyNews.Web.ViewModels.Home;
 
     public class HomeController : BaseController
     {
-        private readonly ApplicationDbContext db;
+        private readonly IDeletableEntityRepository<NewsCategory> categoriesRepository;
+        private readonly IRepository<Image> imageRepository;
+        private readonly IDeletableEntityRepository<NewsTag> tagsRepository;
+        private readonly IDeletableEntityRepository<NewsArticle> articlesRepository;
 
-        public HomeController(ApplicationDbContext db)
+        public HomeController(
+            IDeletableEntityRepository<NewsCategory> categoriesRepository,
+            IRepository<Image> imageRepository,
+            IDeletableEntityRepository<NewsTag> tagsRepository,
+            IDeletableEntityRepository<NewsArticle> articlesRepository)
         {
-            this.db = db;
+            this.categoriesRepository = categoriesRepository;
+            this.imageRepository = imageRepository;
+            this.tagsRepository = tagsRepository;
+            this.articlesRepository = articlesRepository;
         }
 
         public IActionResult Index()
         {
             var viewModel = new IndexViewModel
             {
-                CategoriesCount = this.db.NewsCategories.Count(),
-                ImagesCount = this.db.Images.Count(),
-                ArticlesCount = this.db.NewsArticles.Count(),
-                TagsCount = this.db.NewsTags.Count(),
+                CategoriesCount = this.categoriesRepository.All().Count(),
+                ImagesCount = this.imageRepository.All().Count(),
+                TagsCount = this.tagsRepository.All().Count(),
+                ArticlesCount = this.articlesRepository.All().Count(),
             };
 
             return this.View(viewModel);
