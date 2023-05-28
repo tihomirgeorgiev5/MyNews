@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
     using MyNews.Services.Data;
     using MyNews.Web.ViewModels;
+    using MyNews.Web.ViewModels.Home;
 
     public class HomeController : BaseController
     {
@@ -17,7 +18,15 @@
 
         public IActionResult Index()
         {
-            var viewModel = this.countService.GetCounts();
+            var countsDto = this.countService.GetCounts();
+            var viewModel = new IndexViewModel
+            {
+                CategoriesCount = countsDto.CategoriesCount,
+                ImagesCount = countsDto.ImagesCount,
+                TagsCount = countsDto.TagsCount,
+                ArticlesCount = countsDto.ArticlesCount,
+            };
+
             return this.View(viewModel);
         }
 

@@ -4,6 +4,7 @@
 
     using MyNews.Data.Common.Repositories;
     using MyNews.Data.Models;
+    using MyNews.Services.Data.Models;
     using MyNews.Web.ViewModels.Home;
 
     public class GetCountsService : IGetCountsService
@@ -25,9 +26,9 @@
             this.articlesRepository = articlesRepository;
         }
 
-        public IndexViewModel GetCounts()
+        public CountsDto GetCounts()
         {
-            var data = new IndexViewModel
+            var data = new CountsDto
             {
                 CategoriesCount = this.categoriesRepository.All().Count(),
                 ImagesCount = this.imageRepository.All().Count(),
