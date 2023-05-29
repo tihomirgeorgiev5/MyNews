@@ -21,7 +21,11 @@
 
         public string Author { get; set; }
 
+        public TimeSpan TimeForReading { get; set; }
+
         public DateTime PublishDate { get; set; }
+
+        public int CommentsCount { get; set; }
 
         public int TagsCount
         {
