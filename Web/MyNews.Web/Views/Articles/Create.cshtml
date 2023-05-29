@@ -1,10 +1,29 @@
-﻿@page
-@model MyNews.Web.Views.Articles.CreateModel
-@{
-}
+﻿@model MyNews.Web.ViewModels.Articles.CreateArticleInputModel
 
 <h1>Add new NewsArticle</h1>
 
-<form>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" placeholder="'Ориент Експрес' пристига във Варна...">
+        <span asp-validation-for="Title" class="small text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" rows="4" class="form-control" placeholder="Часът, в който ще пристигне влака е ..."></textarea>
+        <span asp-validation-for="Content" class="small text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl" class="form-control" placeholder="Твоята снимка качи тук...">
+        <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PublishDate"></label>
+        <input asp-for="PublishDate" class="form-control" placeholder="@DateTime.UtcNow.Year">
+        <span asp-validation-for="PublishDate" class="small text-danger"></span>
+    </div>
+    
 
+    <input class="btn btn-primary mt-3" type="submit" value="Save" />
 </form>

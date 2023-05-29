@@ -1,9 +1,13 @@
 ﻿namespace MyNews.Web.ViewModels.Articles
 {
-    public class NewsCommentsInputModel
-    {
-        public string NewsArticle { get; set; }
+    using System.ComponentModel.DataAnnotations;
 
-        public int CommentsCount { get; set; }
+    public class NewsCategoryInputModel
+    {
+        public int Id { get; init; }
+
+        [Required]
+        [MinLength(4)]
+        public string Name { get; init; }
     }
 }
