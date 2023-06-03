@@ -1,4 +1,8 @@
 ﻿@model MyNews.Web.ViewModels.Articles.CreateArticleInputModel
+@{
+    this.ViewData["Title"] = "Add new articleNews";
+    var categoryItems = this.Model.CategoriesItems.Select(x => new SelectListItem(x.Key, x.Value));
+}
 
 <h1>Add new NewsArticle</h1>
 

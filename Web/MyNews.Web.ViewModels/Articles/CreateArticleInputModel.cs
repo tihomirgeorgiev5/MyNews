@@ -30,5 +30,7 @@
         public int CategoryId { get; set; }
 
         public IEnumerable<NewsCategoryInputModel> Categories { get; set; }
+
+        public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
     }
 }
