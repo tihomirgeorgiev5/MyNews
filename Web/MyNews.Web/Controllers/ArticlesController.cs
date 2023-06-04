@@ -17,7 +17,7 @@
         {
             var viewModel = new CreateArticleInputModel();
             viewModel.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
-           
+
             return this.View(viewModel);
         }
 

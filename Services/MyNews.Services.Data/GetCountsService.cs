@@ -5,7 +5,6 @@
     using MyNews.Data.Common.Repositories;
     using MyNews.Data.Models;
     using MyNews.Services.Data.Models;
-    using MyNews.Web.ViewModels.Home;
 
     public class GetCountsService : IGetCountsService
     {
