@@ -33,5 +33,19 @@
         <select asp-for="CategoryId" class="form-control" asp-items="categoryItems"></select>
         <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
+    <div class="form-control" id="CategoriesContainer">
+        <label asp-for="Categories"></label>
+        <button class="btn btn-success" onclick="AddMoreCategories">+</button>
+
+    </div>
     <input class="btn btn-primary mt-3" type="submit" value="Save" />
 </form>
+
+@section Scripts {
+        <script>
+        function AddMoreCategories() {
+
+        }
+    </script>
+}
+
