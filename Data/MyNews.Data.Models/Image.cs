@@ -23,6 +23,8 @@
 
         //// The contents of the image is in the file system
 
+        public string RemoteImageUrl { get; set; }
+
         public string AddedByUserId { get; set; }
 
         public ApplicationUser AddedByUser { get; set; }
