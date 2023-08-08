@@ -12,8 +12,8 @@ using MyNews.Data;
 namespace MyNews.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230525204535_AddNewsArticlesAndRelatedModels")]
-    partial class AddNewsArticlesAndRelatedModels
+    [Migration("20230806222920_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -300,6 +300,9 @@ namespace MyNews.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("RemoteImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AddedByUserId");
@@ -326,6 +329,9 @@ namespace MyNews.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<int>("CommentsCount")
+                        .HasColumnType("int");
+
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
 
@@ -349,6 +355,9 @@ namespace MyNews.Data.Migrations
 
                     b.Property<int>("TagsCount")
                         .HasColumnType("int");
+
+                    b.Property<TimeSpan>("TimeForReading")
+                        .HasColumnType("time");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -537,7 +546,7 @@ namespace MyNews.Data.Migrations
                         .HasForeignKey("AddedByUserId");
 
                     b.HasOne("MyNews.Data.Models.NewsArticle", "Article")
-                        .WithMany()
+                        .WithMany("Images")
                         .HasForeignKey("ArticleId");
 
                     b.Navigation("AddedByUser");
@@ -573,6 +582,8 @@ namespace MyNews.Data.Migrations
 
             modelBuilder.Entity("MyNews.Data.Models.NewsArticle", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("Tags");
                 });
 
