@@ -1,5 +1,6 @@
 ﻿namespace MyNews.Web.Controllers
 {
+    using System;
     using Microsoft.AspNetCore.Mvc;
     using MyNews.Services.Data;
     using MyNews.Web.ViewModels.Articles;
@@ -30,7 +31,10 @@
                 return this.View(input);
             }
 
+            return this.Json(input);
+
             return this.Redirect("/");
+
         }
     }
 }
