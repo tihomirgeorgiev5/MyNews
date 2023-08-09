@@ -20,10 +20,10 @@
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
-        private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
-            typeof(ApplicationDbContext).GetMethod(
-                nameof(SetIsDeletedQueryFilter),
-                BindingFlags.NonPublic | BindingFlags.Static);
+       // private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
+       //     typeof(ApplicationDbContext).GetMethod(
+       //         nameof(SetIsDeletedQueryFilter),
+       //         BindingFlags.NonPublic | BindingFlags.Static);
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -277,11 +277,11 @@
             // Set global query filter for not deleted entities only
             var deletableEntityTypes = entityTypes
                 .Where(et => et.ClrType != null && typeof(IDeletableEntity).IsAssignableFrom(et.ClrType));
-            foreach (var deletableEntityType in deletableEntityTypes)
-            {
-                var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
-                method.Invoke(null, new object[] { builder });
-            }
+           // foreach (var deletableEntityType in deletableEntityTypes)
+           // {
+           //     var method = SetIsDeletedQueryFilterMethod.MakeGenericMethod(deletableEntityType.ClrType);
+           //     method.Invoke(null, new object[] { builder });
+           // }
 
             // Disable cascade delete
             var foreignKeys = entityTypes
@@ -302,11 +302,11 @@
             base.ConfigureConventions(configurationBuilder);
         }
 
-        private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
-           where T : class, IDeletableEntity
-        {
-            builder.Entity<T>().HasQueryFilter(e => !e.IsDeleted);
-        }
+        //private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
+        //   where T : class, IDeletableEntity
+        //{
+        //    builder.Entity<T>().HasQueryFilter(e => !e.IsDeleted);
+        //}
 
         // Applies configurations
         private void ConfigureUserIdentityRelations(ModelBuilder builder)
